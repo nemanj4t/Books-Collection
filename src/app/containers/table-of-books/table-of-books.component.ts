@@ -5,7 +5,8 @@ import { Book } from '../../models/book.model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../app.state';
-import { BooksState } from '../../reducers/book.reducer'
+import { BooksState } from '../../reducers/book.reducer';
+import * as BookActions from '../../actions/book.actions'
 
 @Component({
   selector: 'app-table-of-books',
@@ -40,6 +41,9 @@ export class TableOfBooksComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
+
+    this.store.dispatch(new BookActions.loadBooks());
+
   }
 
   applyFilter(filterValue: string) {

@@ -34,7 +34,7 @@ export function reducer(state: BooksState = initialState, action: BookActions.Ac
     switch(action.type) {
         case BookActions.LOAD_BOOKS:
             return {
-                ...state,
+                ...state, 
                 loading: true,
                 loaded: false
             }
@@ -45,8 +45,10 @@ export function reducer(state: BooksState = initialState, action: BookActions.Ac
                 loaded: false
             }
         case BookActions.LOAD_BOOKS_SUCCESS:
+            let loadedBooks: Book[] = action.payload;
             return {
                 ...state,
+                books: loadedBooks,
                 loading: false,
                 loaded: true
             }
