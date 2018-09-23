@@ -15,4 +15,15 @@ table  {
 td, th {
     width: 25%;
 }
-  
+
+tr:hover {
+    background-color: #e0e0d1;
+}
+
+img {
+    width: 100px;
+}
+
+mat-checkbox {
+    padding: 20px
+}

@@ -1,0 +1,38 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header>
+      Add book
+    </mat-expansion-panel-header>
+    <form [formGroup]="rForm" (ngSubmit)="addNewBook(rForm.value)"> 
+        <mat-form-field>
+            <input formControlName="author" matInput placeholder="Author">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="country" matInput placeholder="Country">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="title" matInput placeholder="Title">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="language" matInput placeholder="Language">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input formControlName="link" matInput placeholder="Link">
+        </mat-form-field>
+        
+        <mat-form-field >
+            <input matInput type="number" placeholder="Pages" formControlName="pages" min="1">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput type="number" placeholder="Year" formControlName="year" min="1">
+        </mat-form-field>
+        
+        <mat-action-row>
+            <button type="submit" mat-button>Add Book</button>
+        </mat-action-row>
+    </form>
+  </mat-expansion-panel>

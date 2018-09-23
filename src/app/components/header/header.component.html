@@ -1,5 +1,8 @@
 <mat-toolbar color='primary'>
   <mat-icon>library_books</mat-icon>
-  <mat-icon>home</mat-icon><span>Home</span>
-  
+  <span><a mat-flat-button routerLink="/books" routerLinkActive="active">Home</a></span>
+  <span><a mat-flat-button routerLink="/MyReads" routerLinkActive="active">My Reads</a></span>
+  <span class="spacer"></span>
+  <span><a mat-flat-button routerLink="/result" routerLinkActive="active">My Results</a></span>
+  <mat-icon>library_books</mat-icon>
 </mat-toolbar>

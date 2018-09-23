@@ -1,0 +1,16 @@
+span {
+    padding: 0 2%;
+}
+
+a:hover{
+    background-color: #000099;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+mat_icon {
+    height: 100px;
+    width: 40px;
+}
