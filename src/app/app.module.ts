@@ -32,6 +32,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 
@@ -74,6 +76,8 @@ const appRoutes: Routes = [
     MatButtonModule,
     MatExpansionModule,
     MatCheckboxModule,
+    MatCardModule,
+    MatGridListModule,
     StoreModule.forRoot({
       books: reducer
     }),

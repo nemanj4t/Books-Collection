@@ -19,7 +19,6 @@ export class AddBookComponent implements OnInit {
       'author': [null, Validators.required],
       'title': [null, Validators.required],
       'country': [null, Validators.required],
-      'imageLink': [null, Validators.required],
       'language': [null, Validators.required],
       'link': [null, Validators.required],
       'pages': [null, Validators.required],
@@ -32,6 +31,7 @@ export class AddBookComponent implements OnInit {
 
   addNewBook(post) {
     console.log(post);
+    this.rForm.reset();
     const book: Book = {
       read: false,
       author : post.author,

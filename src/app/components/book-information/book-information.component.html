@@ -1,3 +1,39 @@
-<p>
-  book-information works!
-</p>
+<div class="BookContainer">
+    <mat-grid-list cols="2" rowHeight="1:1">
+        <mat-grid-tile>
+            <img src="../../../assets/{{params.params.imageLink}}">
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <table>
+                <tr>
+                    <td>Title: </td>
+                    <td>{{params.params.title}}</td>
+                </tr>
+                <tr>
+                    <td>Author: </td>
+                    <td>{{params.params.author}}</td>
+                </tr>
+                <tr>
+                    <td>Country: </td>
+                    <td>{{params.params.country}}</td>
+                </tr>
+                <tr>
+                    <td>Language: </td>
+                    <td>{{params.params.language}}</td>
+                </tr>
+                <tr>
+                    <td>Wiki: </td>
+                    <td><a href="{{params.params.link}}">{{params.params.link}}</a></td>
+                </tr>
+                <tr>
+                    <td>Year: </td>
+                    <td>{{params.params.year}}</td>
+                </tr>
+                <tr>
+                    <td>Pages: </td>
+                    <td>{{params.params.pages}}</td>
+                </tr>
+            </table>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

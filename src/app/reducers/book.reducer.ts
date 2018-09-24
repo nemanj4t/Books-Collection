@@ -4,17 +4,6 @@ import * as BookActions from './../actions/book.actions';
 import { EntityState, EntityAdapter, createEntityAdapter, Dictionary } from '@ngrx/entity';
 import { BooksService } from './../services/books.service';
 
-
-/*const initialState: Book = {
-    author: "",
-    country: "",
-    imageLink: "",
-    language: "",
-    link: "",
-    pages: 0,
-    title: "",
-    year: 0
-}*/
 export const adapter: EntityAdapter<Book> = createEntityAdapter<Book>({
     selectId: (book: Book) => book.id
 });
