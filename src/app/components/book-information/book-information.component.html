@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                     <td>Year: </td>
-                    <td>{{params.params.year}}</td>
+                    <td>{{params.params.year < 0 ? (params.params.year * (-1)) + " b.c" : params.params.year}}</td>
                 </tr>
                 <tr>
                     <td>Pages: </td>

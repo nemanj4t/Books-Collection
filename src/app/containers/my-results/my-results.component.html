@@ -1,0 +1,13 @@
+<div class="resContainer">
+  <h1>My Bookshelf</h1>
+  <app-bookshelf [reads]="reads"></app-bookshelf>
+  <h1>My Results</h1>
+  <mat-grid-list cols="3" rowHeight="4:1">
+    <mat-grid-tile>How many books I've read</mat-grid-tile>
+    <mat-grid-tile><mat-progress-bar mode="determinate" value="{{reads.length/allBooks.length*100}}"></mat-progress-bar></mat-grid-tile>
+    <mat-grid-tile>{{reads.length}}/{{allBooks.length}}</mat-grid-tile>
+    <mat-grid-tile>How many pages I've read</mat-grid-tile>
+    <mat-grid-tile><mat-progress-bar mode="determinate" value="{{readPages/allPages*100}}"></mat-progress-bar></mat-grid-tile>
+    <mat-grid-tile>{{readPages}}/{{allPages}}</mat-grid-tile>
+  </mat-grid-list>
+</div>

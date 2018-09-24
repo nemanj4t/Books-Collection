@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BooksService } from '../../services/books.service';
 import { Book } from '../../models/book.model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -22,7 +21,7 @@ export class MyReadsComponent implements OnInit {
   reads: Book[];
   data: Dictionary<Book>;
 
-  constructor(private booksService: BooksService, private store: Store<AppState>) {
+  constructor(private store: Store<AppState>) {
     this.books = store.select('books');
   }
 
