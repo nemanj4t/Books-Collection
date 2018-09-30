@@ -3,9 +3,9 @@ import { Book } from '../../models/book.model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../app.state';
-import { State } from '../../reducers/book.reducer';
+import {  selectAllBooks } from '../../reducers/book.reducer';
 import * as BookActions from '../../actions/book.actions'
-import { Dictionary } from '@ngrx/entity';
+
 
 @Component({
   selector: 'app-my-results',
@@ -14,42 +14,23 @@ import { Dictionary } from '@ngrx/entity';
 })
 export class MyResultsComponent implements OnInit {
 
-  books: Observable<State>;
+  books: Observable<Book[]>;
   readPages: number;
   allPages: number;
   reads: Book[];
   allBooks: Book[];
-  data: Dictionary<Book>;
 
   constructor(private store: Store<AppState>) {
-    this.books = store.select('books');
+    this.books = store.select(selectAllBooks);
   }
 
   ngOnInit() {
     this.books.subscribe((booksData) => {
-      this.data = booksData.entities;
-      this.allBooks = this.fromEntitiesToAllBooks(this.data);
-      this.reads = this.fromEntitiesToReads(this.fromEntitiesToAllBooks(this.data));
+      this.allBooks = booksData;
+      this.reads = booksData.filter((book) => book.read === true);
       this.allPages = this.pagesAllBooks(this.allBooks);
-      this.readPages = this.pagesReadBooks(this.fromEntitiesToReads(this.data));
+      this.readPages = this.pagesReadBooks(this.reads);
     })
-  }
-
-  fromEntitiesToReads(data) {
-    var array: Book[] = []
-    for (var key in data) {
-      if (data[key].read)
-        array.push(this.data[key]);
-    }
-    return array;
-  }
-
-  fromEntitiesToAllBooks(data) {
-    var array: Book[] = []
-    for (var key in data) {
-      array.push(this.data[key]);
-    }
-    return array;
   }
 
   pagesAllBooks(array: Book[]) {

@@ -1,8 +1,7 @@
-import { Action } from '@ngrx/store';
 import { Book } from './../models/book.model';
 import * as BookActions from './../actions/book.actions';
-import { EntityState, EntityAdapter, createEntityAdapter, Dictionary } from '@ngrx/entity';
-import { BooksService } from './../services/books.service';
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { createSelector, createFeatureSelector } from '@ngrx/store';
 
 export const adapter: EntityAdapter<Book> = createEntityAdapter<Book>({
     selectId: (book: Book) => book.id
@@ -45,7 +44,7 @@ export function reducer(state: State = initialState, action: BookActions.Actions
                 book.id = key.toString();
                 book.read = false;
                 console.log(book);
-              })
+              });
             return adapter.addMany(action.payload, {...state, loading: false, loaded: true})
         
         case BookActions.ADD_BOOK:
@@ -60,3 +59,11 @@ export function reducer(state: State = initialState, action: BookActions.Actions
     }
 }
 
+const { selectIds, selectEntities, selectAll, selectTotal } = adapter.getSelectors();
+export const selectBookState = createFeatureSelector<State>('books');
+
+
+export const selectAllBooks = createSelector(
+    selectBookState,
+    selectAll
+);

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Book } from '../../models/book.model';
+import { MatSnackBar } from '@angular/material'
 
 @Component({
   selector: 'app-bookshelf',
@@ -8,10 +9,16 @@ import { Book } from '../../models/book.model';
 })
 export class BookshelfComponent implements OnInit {
 
-  constructor() { }
+  constructor(public snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
 
   @Input() reads: Book[]; 
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
 }

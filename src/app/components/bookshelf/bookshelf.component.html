@@ -1,1 +1,1 @@
-<img *ngFor="let book of reads" src="../../../assets/{{book.imageLink}}">
+<img *ngFor="let book of reads" (mouseover)="openSnackBar(book.title, book.author)" src="../../../assets/{{book.imageLink}}">

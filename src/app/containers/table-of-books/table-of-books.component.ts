@@ -22,6 +22,7 @@ export class TableOfBooksComponent implements OnInit {
   books: Observable<State>; //observable
   data: Dictionary<Book>; //entity
   booksDB: Book[];
+  loading: boolean;
   
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -34,15 +35,12 @@ export class TableOfBooksComponent implements OnInit {
   ngOnInit() {
     this.fromDbToEntities();
     this.books.subscribe((booksData) => {
+      this.loading = booksData.loading;
       this.data = booksData.entities;
       this.dataSource = new MatTableDataSource(this.fromEntitiesToBooks(this.data));
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
-    
-
-    this.store.dispatch(new BookActions.loadBooks());
-
   }
 
   applyFilter(filterValue: string) {

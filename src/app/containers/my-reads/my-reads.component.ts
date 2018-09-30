@@ -3,9 +3,7 @@ import { Book } from '../../models/book.model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AppState } from './../../app.state';
-import { State } from '../../reducers/book.reducer';
-import * as BookActions from '../../actions/book.actions'
-import { Dictionary } from '@ngrx/entity';
+import { selectAllBooks } from '../../reducers/book.reducer';
 
 @Component({
   selector: 'app-my-reads',
@@ -17,27 +15,17 @@ import { Dictionary } from '@ngrx/entity';
 
 export class MyReadsComponent implements OnInit {
 
-  books: Observable<State>;
+  books: Observable<Book[]>;
   reads: Book[];
-  data: Dictionary<Book>;
 
   constructor(private store: Store<AppState>) {
-    this.books = store.select('books');
+    this.books = store.select(selectAllBooks);
   }
 
   ngOnInit() {
     this.books.subscribe((booksData) => {
-      this.data = booksData.entities;
-      this.reads = this.fromEntitiesToReads(this.data);
+      this.reads = booksData.filter((book) => book.read === true);
     })
   }
 
-  fromEntitiesToReads(data) {
-    var array: Book[] = []
-    for (var key in data) {
-      if (data[key].read)
-        array.push(this.data[key]);
-    }
-    return array;
-  }
 }
